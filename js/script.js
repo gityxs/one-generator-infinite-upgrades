@@ -1554,6 +1554,6 @@ window.onload = function () {
   };
   ExpantaNum.serializeMode = ExpantaNum.STRING;
   changeScreen("main");
-  setInterval(loop, 0);
+  setInterval(loop, 1000 / 30.0);
   setInterval(save, 10000);
 };
