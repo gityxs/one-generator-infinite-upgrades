@@ -375,7 +375,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "cheaperUpgrades2") {
     returnValue = {
       type: "doubleExponential",
-      base: ExpantaNum(5e80),
+      base: ExpantaNum(1e63),
       exponent: {
         base: ExpantaNum(1.25),
         exponent: ExpantaNum(2.1)
@@ -384,7 +384,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators8") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(1e81),
+      base: ExpantaNum(1e65),
       exponent: {
         base: ExpantaNum(10),
         exponent: {
@@ -396,7 +396,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators9") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(5e82),
+      base: ExpantaNum(5e72),
       exponent: {
         base: ExpantaNum(20),
         exponent: {
@@ -408,7 +408,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators10") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(2e84),
+      base: ExpantaNum(2e77),
       exponent: {
         base: ExpantaNum(5),
         exponent: {
@@ -1116,7 +1116,8 @@ function N(x, rounded = false) {
   };
   if(x.lt(1e6)) return x.toNumber().toLocaleString("en-US", {minimumFractionDigits: 0, maximumFractionDigits: 0});
   if(x.lt("eeeee10")) return x.toExponential(game.options.notationPlaces);
-  return `(10↑↑${x.array[1][1]})↑${x.array[0][1]}`;
+  if(x.lt("10^^1000000000000000")) return `(10↑↑${x.array[1][1]})↑${x.array[0][1]}`;
+  return x.toExponential(game.options.notationPlaces).replaceAll("^", "↑");
 }
 
 function formatTime(sec) {
@@ -1553,6 +1554,6 @@ window.onload = function () {
   };
   ExpantaNum.serializeMode = ExpantaNum.STRING;
   changeScreen("main");
-  setInterval(loop, 0);
+  setInterval(loop, 1000 / 30.0);
   setInterval(save, 10000);
 };
