@@ -375,7 +375,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "cheaperUpgrades2") {
     returnValue = {
       type: "doubleExponential",
-      base: ExpantaNum(5e80),
+      base: ExpantaNum(1e63),
       exponent: {
         base: ExpantaNum(1.25),
         exponent: ExpantaNum(2.1)
@@ -384,7 +384,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators8") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(1e81),
+      base: ExpantaNum(1e65),
       exponent: {
         base: ExpantaNum(10),
         exponent: {
@@ -396,7 +396,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators9") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(5e82),
+      base: ExpantaNum(5e72),
       exponent: {
         base: ExpantaNum(20),
         exponent: {
@@ -408,7 +408,7 @@ function getUpgradeCostFactor(name) {
   } else if (name == "strongerGenerators10") {
     returnValue = {
       type: "doubleExponentiatedPolynomial",
-      base: ExpantaNum(2e84),
+      base: ExpantaNum(2e77),
       exponent: {
         base: ExpantaNum(5),
         exponent: {
